@@ -138,6 +138,15 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://multimedia-project-2uur.onrender.com',
+]
+
+RENDER_DOMAIN = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_DOMAIN:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_DOMAIN}")
+
+
 # Media URL:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
